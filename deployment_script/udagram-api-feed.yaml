@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend-feed
-          image: susu17/udagram-api-feed:v2
+          image: susu17/udagram-api-feed:v9
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -27,7 +27,13 @@ spec:
                 name: aws-secret
             - configMapRef:
                 name: env-configmap
-
+          resources:
+            limits:
+              cpu: 500m
+              memory: 2048Mi
+            requests:
+              cpu: 250m
+              memory: 64Mi
 ---
 apiVersion: v1
 kind: Service
